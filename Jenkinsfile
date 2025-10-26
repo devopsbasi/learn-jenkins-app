@@ -22,5 +22,20 @@ pipeline {
                 '''
             }
         }
+
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:22-alpine'
+                    args '-u root'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    test -f build/index.html
+                '''
+            }
+        }        
     }
 }
