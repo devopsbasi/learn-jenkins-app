@@ -1,7 +1,8 @@
 pipeline {
     agent any
-    
+
     stages {
+
         stage('Build') {
             agent {
                 docker {
@@ -12,7 +13,6 @@ pipeline {
             }
             steps {
                 sh '''
-                    whoami
                     ls -la
                     node --version
                     npm  --version
